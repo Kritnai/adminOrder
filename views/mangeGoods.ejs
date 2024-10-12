@@ -53,10 +53,10 @@
                             <td>
                                 <%= item.date %>
                             </td>
-                            <td><a class="btn btn-danger" href="/delete/<%= item.name%>"
+                            <td><a class="btn btn-danger" href="/?vercelToolbarCode=_zf9JGIhTK_FNvQ/delete/<%= item.name%>"
                                     onclick="return confirm('confirm to delete <%= item.name%>!!')">ลบ</a></td>
                             <td>
-                                <form action="/edit" method="post">
+                                <form action="/?vercelToolbarCode=_zf9JGIhTK_FNvQ/edit" method="post">
                                     <input type="hidden" name="edit_name" value="<%= item.name%>">
                                     <button type="submit" class="btn btn-primary">แก้ไข</button>
                                 </form>
