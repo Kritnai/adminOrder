@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }))
 
 
 const orderList = [
@@ -41,6 +42,9 @@ const orderList = [
     }
 ]
 
+app.listen(8080, () => {
+    console.log("Starting serever at port 8080");
+})
 
 app.get('/', (req, res) => {
     res.render('./bashboard.ejs', { order: orderList });
@@ -166,11 +170,8 @@ app.post('/insert', (req, res) => {
     res.redirect('/');
 })
 
-app.use(express.urlencoded({ extended: false }))
 
 
-app.listen(8080, () => {
-    console.log("Starting serever at port 8080");
-})
+
 
 module.exports = app;
