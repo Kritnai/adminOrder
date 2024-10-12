@@ -3,8 +3,12 @@ const router = require('./routes/MyAPI');
 
 const app = express();
 
+
+// Set the view engine to ejs
 app.set('view engine', 'ejs');
 
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: false }))
 app.use(router);
