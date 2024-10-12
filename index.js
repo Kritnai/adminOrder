@@ -167,7 +167,6 @@ app.post('/insert', (req, res) => {
 })
 
 app.use(express.urlencoded({ extended: false }))
-app.use(app);
 
 
 app.listen(8080, () => {
