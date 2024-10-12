@@ -14,4 +14,4 @@ app.listen(8080, () => {
     console.log("Starting serever at port 8080");
 })
 
-exports.module = app;
+module.exports = app;
