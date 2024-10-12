@@ -42,9 +42,10 @@ const orderList = [
     }
 ]
 
-app.listen(8080, () => {
-    console.log("Starting serever at port 8080");
-})
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 
 app.get('/', (req, res) => {
     res.render('./bashboard.ejs', { order: orderList });
