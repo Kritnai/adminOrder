@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Goods</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <%- include("navbar.ejs"); %>
+        <div class="container">
+            <div class="card mt-5 mb-5 text-center" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">รวมยอด</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        เลือกรูปแบบที่จะรวมยอด
+                    </h6>
+
+                    <p class="card-text">
+                    </p>
+
+                    <div class="row row-cols-1 row-cols-sm-2">
+                        <button onclick="copySummary('20')" class="btn btn-primary mt-3 col">chatGPT 20฿</button>
+                        <button onclick="copySummary('130')" class="btn btn-primary mt-3 col">chatGPT 130฿</button>
+                        <button onclick="copySummary('199')" class="btn btn-primary mt-3 col">chatGPT 199฿</button>
+                        <button onclick="copySummary('250')" class="btn btn-primary mt-3 col">cluadAI 250฿</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <% Object.values(order).forEach(function(item){%>
+                <div class="card m-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= item.name %>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">ชนิด <%= item.type %>
+                        </h6>
+
+                        <p class="card-text">
+                            ชื่อ: <%= item.name %>
+                        </p>
+                        <p class="card-text">
+                            email: <%= item.type %>
+                        </p>
+                        <p class="card-text">
+                            password: <%= item.pass %>
+                        </p>
+                        <p class="card-text">
+                            วันหมดอายุ: <%= item.date %>
+                        </p>
+
+                        <button onclick="copyDetail('<%= item.name %>')" class="btn btn-primary">Copy
+                            detail</button>
+                    </div>
+
+                </div>
+                <% }) %>
+
+        </div>
+
+
+
+</body>
+
+</html>
+
+<Script>
+    function copyDetail(name) {
+        fetch(`/getMailGPT/${name}`)
+            .then(response => response.text())  // รับข้อมูลที่ส่งกลับจาก API
+            .then(data => {
+                navigator.clipboard.writeText(data);  // คัดลอกข้อมูลไปที่ clipboard
+                alert("Copied the text: " + data);  // แสดงข้อความที่คัดลอก
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function copySummary(price) {
+        fetch(`/getSummary/${price}`)
+            .then(response => response.text())  // รับข้อมูลที่ส่งกลับจาก API
+            .then(data => {
+                navigator.clipboard.writeText(data);  // คัดลอกข้อมูลไปที่ clipboard
+                alert("Copied the text: " + data);  // แสดงข้อความที่คัดลอก
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+
+</Script>
