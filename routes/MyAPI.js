@@ -131,7 +131,7 @@ router.post('/update', (req, res) => {
         };
     }
 
-    res.redirect('/?vercelToolbarCode=_zf9JGIhTK_FNvQ/manage');
+    res.redirect('/manage');
 })
 
 router.get('/delete/:name', (req, res) => {
@@ -142,7 +142,7 @@ router.get('/delete/:name', (req, res) => {
         // Remove the item at the found index
         orderList.splice(index, 1);
     }
-    res.redirect('/?vercelToolbarCode=_zf9JGIhTK_FNvQ/manage');
+    res.redirect('/manage');
 })
 
 router.get('/add_new', (req, res) => {
@@ -158,7 +158,7 @@ router.post('/insert', (req, res) => {
         "date": req.body.date
     })
 
-    res.redirect('/?vercelToolbarCode=_zf9JGIhTK_FNvQ/');
+    res.redirect('/');
 })
 
 module.exports = router;

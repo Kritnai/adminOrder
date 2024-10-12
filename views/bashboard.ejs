@@ -77,7 +77,7 @@
 
 <Script>
     function copyDetail(name) {
-        fetch(`/?vercelToolbarCode=_zf9JGIhTK_FNvQ/getMailGPT/${name}`)
+        fetch(`/getMailGPT/${name}`)
             .then(response => response.text())  // รับข้อมูลที่ส่งกลับจาก API
             .then(data => {
                 navigator.clipboard.writeText(data);  // คัดลอกข้อมูลไปที่ clipboard
@@ -89,7 +89,7 @@
     }
 
     function copySummary(price) {
-        fetch(`/?vercelToolbarCode=_zf9JGIhTK_FNvQ/getSummary/${price}`)
+        fetch(`/getSummary/${price}`)
             .then(response => response.text())  // รับข้อมูลที่ส่งกลับจาก API
             .then(data => {
                 navigator.clipboard.writeText(data);  // คัดลอกข้อมูลไปที่ clipboard
